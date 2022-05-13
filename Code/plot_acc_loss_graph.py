@@ -1,20 +1,14 @@
 import matplotlib.pyplot as plt
 
-def plot_acc_loss_graph(history, epochs):
-    acc = history.history['acc']
-    val_acc = history.history['val_acc']
-    loss = history.history['loss']
-    val_loss = history.history['val_loss']
+def plot_graphs(history, string):
+  plt.plot(history.history[string])
+  plt.plot(history.history['val_'+string])
+  plt.xlabel("Epochs")
+  plt.ylabel(string)
+  plt.legend([string, 'val_'+string])
 
-    plt.plot(acc, 'b', label='Training accuracy')
-    plt.plot(val_acc, 'r', label='Validation accuracy')
-    plt.title('Training and Validation Accuracy')
-    plt.legend()
-    plt.figure()
+  dtime = dt.time()
+  now = dt.datetime.now()
+  now.strftime("%Y-%m-%d %H-%M-%S")
 
-    plt.plot(loss, 'b', label='Training loss')
-    plt.plot(val_loss, 'r', label='Validation loss')
-    plt.title('Training and Validation Loss')
-    plt.legend()
-
-    plt.show()
+  plt.savefig(f'{now}.png')
