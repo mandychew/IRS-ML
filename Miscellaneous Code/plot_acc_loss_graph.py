@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import datetime as dt
 
 def plot_graphs(history, string):
   plt.plot(history.history[string])
